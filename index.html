@@ -9,103 +9,121 @@
 </head>
 <body>
   <div class="container" id="app">
-    <header id="header">
-      <div class="wrapper">
-        <h1 class="hstyle">Fretboard Friend</h1>
-        <h2 class="hstyle">JxsGuitarTools</h2>
-        <h3 class="hstyle">Use this tool to help learn the modes of the major scale</h3>
-      </div>
-     
-    </header>
-    <!-- <header>
-      <div class="wrapper">
-      <h1>Fretboard Friend</h1>
-
-      </div>
-    </header> -->
-    <div class="neck">
-      <div class="guitar-neck">
-        <div class="string-container" id="board">
-          <ul class="strings str1" id="str1">
-          </ul>
-          <ul class="strings str2" id="str2">
-          </ul>
-          <ul class="strings str3" id="str3">
-          </ul>
-          <ul class="strings str4" id="str4">
-          </ul>
-          <ul class="strings str5" id="str5">
-          </ul>
-          <ul class="strings str6" id="str6">
-          </ul>
+    <div class="wrapper">
+      <div class="flex-parent">
+        <div class="flex-child">
+            <section id="menu" class="wrapper">
+                <div class="menu-section">
+                    <div class="menu-style">
+                      <!-- Options Controls -->
+                      <!-- Two menu lists -->
+                      <header><h1>Fretboard Friend</h1></header>
+                      <h2 class="hstyle">Select a Key, then select a mode. Click create to apply to the fretboard.</h2>
+                      <ul class="options-list is-visble" id="qualityID">
+                        <li value="major">major</li>
+                        <li value="melodic">melodic</li>
+                        <li value="harmonicmin">harmonic</li>
+                      </ul>
+                      <div id="modesListener">
+                        <ul class="options-list toggle-content" id="majorModes">
+                          <li value="ionian">Ionian</li>
+                          <li value="dorian">Dorian</li>
+                          <li value="phrygian">Phrygian</li>
+                          <li value="lydian">Lydian</li>
+                          <li value="mixolydian">Mixolydian</li>
+                          <li value="aeolian">Aeolian</li>
+                          <li value="locrian">Locrian</li>
+                        </ul>
+                        <ul class="options-list toggle-content" id="melodicModes">
+                          <li value="melodicmin">melodic</li>
+                          <li value="dorianb2">dorian b2</li>
+                          <li value="lydianAugmented">lydian #5</li>
+                          <li value="lydianDom">lydian dominant</li>
+                          <li value="mixolydianb6">mixolydian b6</li>
+                          <li value="locrian#2">locrian #2</li>
+                          <li value="superlocrian">superlocrian</li>
+                        </ul>
+                        <ul class="options-list toggle-content" id="harminModes">
+                          <li value="harmonicmin">harmonic</li>
+                          <li value="locrian6">locrain #6</li>
+                          <li value="ionian5">ionian #5</li>
+                          <li value="dorian4">dorian #4</li>
+                          <li value="phygiandom">phygian dominant</li>
+                          <li value="lydian2">lydian #2</li>
+                          <li value="superlocrian2">superlocrian</li>
+                        </ul>
+                      </div>
+                     
+                      <ul class="options-list" id="keyID">
+                        <li value="6" name="D#">D#</li>
+                        <li value="7" name="E">E</li>
+                        <li value="8" name="F">F</li>
+                        <li value="9" name="F#">F#</li>
+                        <li value="10" name="G">G</li>
+                        <li value="11" name="G#">G#</li>
+                        <li value="0" name="A">A</li>
+                        <li value="1" name="A#">A#</li>
+                        <li value="2" name="B">B</li>
+                        <li value="3" name="C">C</li>
+                        <li value="4" name="C#">C#</li>
+                        <li value="5" name="D">D</li>
+                      </ul>
+                      <!-- One controll button  -->
+                      <button id="createbtn" class="btn">create</button>
+                    </div>
+                </div>
+              </section>
+        </div>
+        <div class="flex-child">
+            <div class="neck">
+               <h2 class="hstyle">Mode: <span id="outputfeild" class="res"></span></h2> 
+               <h2 class="hstyle">Key: <span id="outputfeild2" class="res"></span></h2> 
+              <div class="guitar-neck">
+                <div class="string-container" id="board">
+                  <ul class="inlays">
+                    <li>0</li>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                    <li>11</li>
+                  </ul>
+                  <ul class="strings str1" id="str1">
+                  </ul>
+                  <ul class="strings str2" id="str2">
+                  </ul>
+                  <ul class="strings str3" id="str3">
+                  </ul>
+                  <ul class="strings str4" id="str4">
+                  </ul>
+                  <ul class="strings str5" id="str5">
+                  </ul>
+                  <ul class="strings str6" id="str6">
+                  </ul>
+                </div>
+              </div>
+            
+            </div>
         </div>
       </div>
+    </div>
+  
     
-    </div>
-    <section id="menu" class="wrapper">
-      <div class="menu-section">
-          <div class="menu-style">
-            <!-- Options Controls -->
-            <!-- Two menu lists -->
-            <h2 class="hstyle">Select a Key, then select a mode. Click create to apply to the fretboard.</h2>
-            <ul class="options-list is-visble" id="qualityID">
-              <li value="major">major</li>
-              <li value="melodic">melodic</li>
-              <li value="harmonicmin">harmonic</li>
-            </ul>
-            <ul class="options-list toggle-content" id="majorModes">
-              <li value="ionian">Ionian</li>
-              <li value="dorian">Dorian</li>
-              <li value="phrygian">Phrygian</li>
-              <li value="lydian">Lydian</li>
-              <li value="mixolydian">Mixolydian</li>
-              <li value="aeolian">Aeolian</li>
-              <li value="locrian">Locrian</li>
-            </ul>
-            <ul class="options-list toggle-content" id="melodicModes">
-              <li value="melodicmin">melodic</li>
-              <li value="dorianb2">dorian b2</li>
-              <li value="lydianAugmented">lydian #5</li>
-              <li value="lydianDom">lydian dominant</li>
-              <li value="mixolydianb6">mixolydian b6</li>
-              <li value="locrian#2">locrian #2</li>
-              <li value="superlocrian">superlocrian</li>
-            </ul>
-            <ul class="options-list toggle-content" id="harminModes">
-              <li value="harmonicmin">harmonic</li>
-              <li value="locrian6">locrain #6</li>
-              <li value="ionian5">ionian #5</li>
-              <li value="dorian4">dorian #4</li>
-              <li value="phygiandom">phygian dominant</li>
-              <li value="lydian2">lydian #2</li>
-              <li value="superlocrian2">superlocrian</li>
-            </ul>
-            <ul class="options-list" id="keyID">
-              <li value="6" name="D#">D#</li>
-              <li value="7" name="E">E</li>
-              <li value="8" name="F">F</li>
-              <li value="9" name="F#">F#</li>
-              <li value="10" name="G">G</li>
-              <li value="11" name="G#">G#</li>
-              <li value="0" name="A">A</li>
-              <li value="1" name="A#">A#</li>
-              <li value="2" name="B">B</li>
-              <li value="3" name="C">C</li>
-              <li value="4" name="C#">C#</li>
-              <li value="5" name="D">D</li>
-            </ul>
-            <!-- One controll button  -->
-            <button id="createbtn" class="btn">create</button>
-          </div>
-      </div>
-    </section>
-
-    <div class="outputs">
+    <!-- <div class="outputs">
       <div class="wrapper">
-        <h2 id="outputfeild" class="hstyle">mode:</h2>
-        <h2 id="outputfeild2" class="hstyle">key:</h2>
+        
       </div>
-    </div>
+    </div> -->
+    
+   
+
+    
 
   
 

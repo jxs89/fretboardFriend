@@ -235,7 +235,7 @@ input::-moz-focus-inner {
 }
 
 h1 {
-  font-size: 46px;
+  font-size: 30px;
   font-family: Header;
   text-transform: uppercase;
   color: var(--color2);
@@ -250,6 +250,9 @@ h1 {
   display: block;
   padding: 1rem;
 }
+.res{
+  color: var(--color1);
+}
 
 /* Setup Containers */
 
@@ -262,6 +265,15 @@ h1 {
    */
   background: var(--color4);
   padding: 1rem;
+}
+
+.flex-parent{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.flex-child{
+  flex: .5;
 }
 
 .wrapper {
@@ -305,6 +317,7 @@ h1 {
   height: auto;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   padding: 1rem;
   transition-timing-function: ease-in-out;
   transition-delay: 1s;
@@ -337,46 +350,61 @@ h1 {
 .guitar-neck {
   border: 5px solid var(--color3);
   border-radius: 32px;
+  margin: 0 auto;
   width: 100%;
   padding: 1rem;
+  background: var(--color4);
 }
 
 .string-container {
   width: 100%;
 }
 
-.strings {
+.strings, .inlays{
+  padding: 0rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
+}
+.inlays{
+  margin-bottom: 2rem;
 }
 
 .target-tone {
   background: var(--color5);
 }
+.inlays li{
+  border: 2px solid var(--color3); 
+  color: var(--color1);
+  border-radius: 5px;
+}
+.strings li{
+  border: 2px solid var(--color4); 
+  color: var(--color2);
+  border-radius: 32px;
+}
 
-.strings li {
+.strings li, .inlays li {
   padding: 1.5rem;
-  margin: 1px;
-  /* background-color: rgba(0, 0, 0, .1); */
-  /* background: red; */
   display: grid;
   justify-items: center;
   align-content: center;
   align-items: center;
   justify-content: center;
-  /* border: 2px solid var(--color3); */
-  color: var(--color2);
-  border-radius: 32px;
   width: 1rem;
   height: 1rem;
 }
 
-.string-li:first-child {
-  /* background: var(--color1); */
-  /* border: 2px solid var(--color1); */
-  color: var(--color2);
+.strings li:first-child{
+  border: 2px solid var(--color5);
+  margin-right: 2rem;
+
+
 }
+.inlays li:first-child{
+  margin-right: 2rem;
+}
+
 
 /* Show Hide Functions */
 

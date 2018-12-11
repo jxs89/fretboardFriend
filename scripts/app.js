@@ -8,6 +8,8 @@ app.harmonicminModesList = document.querySelector('#harminModes');
 app.qualityList = document.querySelector('#qualityID');
 app.fretboardControl = document.getElementById('gtrNeck');
 
+app.modesListner = document.getElementById('modesListener');
+
 
 
 app.wts = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
@@ -86,7 +88,8 @@ app.newWTS = function (array, root) {
 
 // MODE FILTERS
 
-// Ionian
+
+// MAJOR SCALE FILTERS
 app.ionianScale = function (array) {
   let ionianScaleArr = [];
   ionianScaleArr[0] = array[0];
@@ -99,7 +102,6 @@ app.ionianScale = function (array) {
 
   return ionianScaleArr;
 };
-// Dorian
 app.dorianScale = function (array) {
   let dorianScaleArr = [];
 
@@ -112,7 +114,6 @@ app.dorianScale = function (array) {
   dorianScaleArr[6] = array[10];
   return dorianScaleArr;
 };
-// Phrygian Scale
 app.phrygianScale = function (array) {
   let phrygianScaleArr = [];
 
@@ -125,7 +126,6 @@ app.phrygianScale = function (array) {
   phrygianScaleArr[6] = array[10];
   return phrygianScaleArr;
 };
-// Lydian Scale
 app.lydianScale = function (array) {
   let lydianScaleArr = [];
 
@@ -151,7 +151,6 @@ app.mixolydianScale = function (array) {
   mixoArr[6] = array[10];
   return mixoArr;
 };
-// Aeolian
 app.aeolianScale = function (array) {
   let aeolianScaleArr = [];
 
@@ -164,7 +163,6 @@ app.aeolianScale = function (array) {
   aeolianScaleArr[6] = array[10];
   return aeolianScaleArr;
 };
-// Locrian
 app.locrianScale = function (array) {
   let locrianArr = [];
   locrianArr[0] = array[0];
@@ -176,6 +174,179 @@ app.locrianScale = function (array) {
   locrianArr[6] = array[10];
   return locrianArr;
 };
+
+// MELODIC MODE FILTER
+app.melodic = function(array) {
+  let melodicArr = [];
+  melodicArr[0] = array[0];
+  melodicArr[1] = array[2];
+  melodicArr[2] = array[3];
+  melodicArr[3] = array[5];
+  melodicArr[4] = array[7];
+  melodicArr[5] = array[9];
+  melodicArr[6] = array[11];
+  return melodicArr;
+}
+app.dorianb2 = function(array) {
+  let dorianb2Arr = [];
+  dorianb2Arr[0] = array[0];
+  dorianb2Arr[1] =  array[1];
+  dorianb2Arr[2] = array[3];
+  dorianb2Arr[3] = array[5];
+  dorianb2Arr[4] = array[7];
+  dorianb2Arr[5] = array[9];
+  dorianb2Arr[6] = array[11];
+  return dorianb2Arr;
+}
+app.lydianAug = function(array) {
+  let lydianAugArr = [];
+  lydianAugArr[0] = array[0];
+  lydianAugArr[1] = array[2];
+  lydianAugArr[2] = array[4];
+  lydianAugArr[3] = array[6];
+  lydianAugArr[4] = array[7];
+  lydianAugArr[5] = array[9];
+  lydianAugArr[6] = array[11];
+  return lydianAugArr;
+}
+app.lydianDom = function(array) {
+  let lydianDomArr = [];
+  lydianDomArr[0] = array[0];
+  lydianDomArr[1] = array[2];
+  lydianDomArr[2] = array[4];
+  lydianDomArr[3] = array[6];
+  lydianDomArr[4] = array[7];
+  lydianDomArr[5] = array[9];
+  lydianDomArr[6] = array[10];
+  return lydianDomArr;
+}
+app.mixoflat6 = function(array) {
+  let mixoflat6Arr = [];
+  mixoflat6Arr[0] = array[0];
+  mixoflat6Arr[1] = array[2];
+  mixoflat6Arr[2] = array[4];
+  mixoflat6Arr[3] = array[5];
+  mixoflat6Arr[4] = array[7];
+  mixoflat6Arr[5] = array[8];
+  mixoflat6Arr[6] = array[10];
+  return mixoflat6Arr;
+
+}
+app.locriansharp2 = function(array) {
+  let locriansharp2Arr = [];
+  locriansharp2Arr[0] = array[0];
+  locriansharp2Arr[1] = array[2];
+  locriansharp2Arr[2] = array[3];
+  locriansharp2Arr[3] = array[5];
+  locriansharp2Arr[4] = array[6];
+  locriansharp2Arr[5] = array[8];
+  locriansharp2Arr[6] = array[10];
+  return locriansharp2Arr;
+}
+app.superlocrian = function(array) {
+  let superlocrianArr = [];
+  superlocrianArr[0] = array[0];
+  superlocrianArr[1] = array[2];
+  superlocrianArr[2] = array[4];
+  superlocrianArr[3] = array[5];
+  superlocrianArr[4] = array[7];
+  superlocrianArr[5] = array[9];
+  superlocrianArr[6] = array[10];
+  return superlocrianArr;
+}
+
+// HARMONIV MODE FILTER
+app.harmonicmin = function(array){
+  let harmonicminArr = [];
+  harmonicminArr[0] = array[0];
+  harmonicminArr[1] = array[2];
+  harmonicminArr[2] = array[3];
+  harmonicminArr[3] = array[5];
+  harmonicminArr[4] = array[7];
+  harmonicminArr[5] = array[9];
+  harmonicminArr[6] = array[11];
+  return harmonicminArr;
+}
+app.locrian6 = function(array){
+  let locrian6Arr = [];
+  locrian6Arr[0] = array[0];
+  locrian6Arr[1] = array[1];
+  locrian6Arr[2] = array[3];
+  locrian6Arr[3] = array[5];
+  locrian6Arr[4] = array[6];
+  locrian6Arr[5] = array[9];
+  locrian6Arr[6] = array[10];
+  return locrian6Arr;
+}
+app.ionian5 = function(array){
+  let ionian5Arr = [];
+  ionian5Arr[0] = array[0];
+  ionian5Arr[1] = array[2];
+  ionian5Arr[2] = array[4];
+  ionian5Arr[3] = array[5];
+  ionian5Arr[4] = array[8];
+  ionian5Arr[5] = array[9];
+  ionian5Arr[6] = array[10];
+  return ionian5Arr;
+}
+app.dorian4 = function(array){
+  let dorian4Arr = [];
+  dorian4Arr[0] = array[0];
+  dorian4Arr[1] = array[2];
+  dorian4Arr[2] = array[3];
+  dorian4Arr[3] = array[6];
+  dorian4Arr[4] = array[7];
+  dorian4Arr[5] = array[9];
+  dorian4Arr[6] = array[20];
+  return dorian4Arr;
+}
+app.phrgyiandom = function(array){
+  let phrygiandomArr = [];
+  phrygiandomArr[0] = array[0];
+  phrygiandomArr[1] = array[1];
+  phrygiandomArr[2] = array[4];
+  phrygiandomArr[3] = array[5];
+  phrygiandomArr[4] = array[7];
+  phrygiandomArr[5] = array[9];
+  phrygiandomArr[6] = array[10];
+  return phrygiandomArr;
+}
+app.lydian2 = function(array){
+  let lydian2Arr = [];
+  lydian2Arr[0] = array[0];
+  lydian2Arr[1] = array[3];
+  lydian2Arr[2] = array[4];
+  lydian2Arr[3] = array[6];
+  lydian2Arr[4] = array[8];
+  lydian2Arr[5] = array[9];
+  lydian2Arr[6] = array[10];
+  return lydian2Arr;
+}
+app.harmsuperlocrian = function(array){
+  let harmsuperlocrianArr = [];
+  harmsuperlocrianArr[0] = array[0];
+  harmsuperlocrianArr[1] = array[1];
+  harmsuperlocrianArr[2] = array[3];
+  harmsuperlocrianArr[3] = array[4];
+  harmsuperlocrianArr[4] = array[6];
+  harmsuperlocrianArr[5] = array[8];
+  harmsuperlocrianArr[6] = array[10];
+  return harmsuperlocrianArr;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // END MODE FILTERS 
 // Compare two arrays
@@ -281,7 +452,6 @@ app.createMode = function (x) {
 app.applyMode = function () {
   let value = app.modeReturnVal;
   switch (value) {
-
     case 'ionian':
       app.clearBoard();
       app.createdIonianScale = app.ionianScale(app.keyReturnArr)
@@ -323,18 +493,133 @@ app.applyMode = function () {
 
       app.createdAeolianScale = app.aeolianScale(app.keyReturnArr);
       app.createBoard();
-      app.createMode();
+      app.createMode(app.createdAeolianScale);
       console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
       break;
     case 'locrian':
       app.clearBoard();
 
-      app.createdLocrianScale = app.LocrianScale(app.keyReturnArr);
+      app.createdLocrianScale = app.locrianScale(app.keyReturnArr);
       app.createBoard();
-      app.createMode();
+      app.createMode(app.createdLocrianScale);
       console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
 
       break;
+    case 'melodicmin':
+      app.clearBoard();
+
+      app.createdMelodicScale = app.melodic(app.keyReturnArr);
+      app.createBoard();
+      app.createMode(app.createdMelodicScale);
+      console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
+
+      break;
+    case 'dorianb2':
+      app.clearBoard();
+
+      app.createdDorianb2Scale = app.dorianb2(app.keyReturnArr);
+      app.createBoard();
+      app.createMode(app.createdDorianScale);
+      console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
+
+      break;
+    case 'lydianAugmented':
+      app.clearBoard();
+
+      app.createdlydianAugmentedScale = app.lydianAug(app.keyReturnArr);
+      app.createBoard();
+      app.createMode(app.createdlydianAugmentedScale);
+      console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
+
+      break;
+    case 'lydianDom':
+      app.clearBoard();
+
+      app.createdlydianDomScale = app.lydianDom(app.keyReturnArr);
+      app.createBoard();
+      app.createMode(app.createdlydianDomScale);
+      console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
+
+      break;
+    case 'mixolydianb6':
+      app.clearBoard();
+
+      app.createdmixolydianb6Scale = app.mixoflat6(app.keyReturnArr);
+      app.createBoard();
+      app.createMode(app.createdmixolydianb6Scale);
+      console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
+
+      break;
+    case 'locrian#2':
+      app.clearBoard();
+
+      app.createdlocriansharp2Scale = app.locriansharp2(app.keyReturnArr);
+      app.createBoard();
+      app.createMode(app.createdlocriansharp2Scale);
+      console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
+
+      break;
+    case 'superlocrian':
+      app.clearBoard();
+
+      app.createdsuperlocrianScale = app.lydianAug(app.keyReturnArr);
+      app.createBoard();
+      app.createMode(app.createdsuperlocrianScale);
+      console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
+
+      break;
+
+    case 'harmonicmin':
+      app.clearBoard();
+      app.createdHarmonicMinorScale = app.harmonicmin(app.keyReturnArr);
+      app.createBoard();
+      app.createMode(app.createdHarmonicMinorScale);
+      console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
+
+      break;
+    case 'locrian6':
+      app.clearBoard();
+      app.createdLocrian6Scale = app.locrian6(app.keyReturnArr);
+      app.createBoard();
+      app.createMode(app.createdLocrian6Scale);
+      console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
+
+      break;
+    case'dorian4':
+      app.clearBoard();
+      app.createdDorian4Scale = app.dorian4(app.keyReturnArr);
+      app.createBoard();
+      app.createMode(app.createdDorian4Scale);
+      console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
+
+      break;
+    case'phygiandom':
+      app.clearBoard();
+      app.createdPhgiandomScale= app.phrgyiandom(app.keyReturnArr);
+      app.createBoard();
+      app.createMode(app.createPhgiandomScale);
+      console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
+
+
+      break;
+    case'lydian2':
+      app.clearBoard();
+      app.createdLydian2Scale = app.lydian2(app.keyReturnArr);
+      app.createBoard();
+      app.createMode(app.createdLydian2Scale);
+      console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
+
+
+      break;
+    case 'superlocrian2':
+      app.clearBoard();
+      app.createdSuperlocrian2Scale = app.harmsuperlocrian(app.keyReturnArr);
+      app.createBoard();
+      app.createMode(app.createdSuperlocrian2Scale);
+      console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
+
+      break;
+    
   }
 }
 
@@ -423,7 +708,7 @@ app.keyList.addEventListener('click', function (e) {
   app.outputfeild2.innerHTML = app.keyLetterVal + app.keyReturnVal;
   app.keyReturnArr = app.newWTS(app.wts, app.keyReturnVal);
 })
-app.majorModesList.addEventListener('click', function (e) {
+app.modesListner.addEventListener('click', function (e) {
   e.preventDefault();
   app.modeReturnVal = app.getValue(e);
   app.outputfeild.innerHTML = app.modeReturnVal;
@@ -433,14 +718,11 @@ app.majorModesList.addEventListener('click', function (e) {
 
 app.applyBtnElement.addEventListener('click', function () {
   app.applyMode();
-  app.keyReturnVal = "";
+  // app.keyReturnVal = "";
   console.log(app.keyReturnVal);
-  app.modeReturnVal = "";
+  // app.modeReturnVal = "";
   console.log(app.modeReturnVal);
 })
-
-// app.keyList.addEventListener('click', app.getValue);
-// app.modeList.addEventListener('click', app.getValue);
 
 // App Initializer
 app.init = function () {
