@@ -372,77 +372,49 @@ app.hide = function (elem) {
 }
 app.toggle1 = function (elem) {
   elem.classList.toggle('is-visible');
+  console.log(elem);
 }
 // EVENT LISTNERS
 app.qualityList.addEventListener('click', function(e){
   // e.preventDefault();
-  let value = app.getValue(e);
+  let value = "";
+   value = app.getValue(e);
 
-  if(value == 'major') {
-    app.toggle1(app.majorModesList);
-    // app.hide(app.melodicModesList);
-    // app.toggle1(app.melodicModesList);
-    // app.toggle1(app.keyList);
-    console.log(app.majorModesList.classList);
-  }
-  if (value == 'melodic') {
-    app.toggle1(app.melodicModesList);
-    // app.toggle1(app.keyList);
-  }
-  if (value == 'harmonicmin') {
+  // Harmonic
+  if(value !== 'major' && value !== 'melodic'){
+    if(app.majorModesList.classList.contains('is-visible')){
+      app.toggle1(app.majorModesList);
+    }
+    if(app.melodicModesList.classList.contains('is-visible')){
+      app.toggle1(app.melodicModesList);
+    }
     app.toggle1(app.harmonicminModesList);
-    // app.toggle1(app.keyList);
+}
+// major
+if(value !== 'harmonicmin' && value !== 'melodic'){
+  if(app.melodicModesList.classList.contains('is-visible')){
+    app.toggle1(app.melodicModesList);
   }
-  if (app.majorModesList.classList === ".is-visible") {
-    app.hide(app.melodicModesList);
-    app.hide(app.harmonicminModesList);
-    console.log('test');
+  if (app.harmonicminModesList.classList.contains('is-visible')){
+    app.toggle1(app.harmonicminModesList);
   }
+    app.toggle1(app.majorModesList);
+}
 
-  if (app.melodicModesList.classList == ".is-visible") {
-    app.hide(app.majorModesList);
-    app.hide(app.harmonicminModesList);
+
+if(value !== 'major' && value !== 'harmonicmin'){
+  if(app.majorModesList.classList.contains('is-visible')){
+    app.toggle1(app.majorModesList);
   }
-
-  if (app.harmonicminModesList.classList == ".is-visible") {
-    app.hide(app.melodicModesList);
-    app.hide(app.majorModesList);
+  if(app.harmonicminModesList.classList.contains('is-visible')){
+    app.toggle1(app.harmonicModesList);
   }
+  app.toggle1(app.melodicModesList);
 
+}
 
-
-  // if (app.harmonicModesList.classList == "is-visible") {
-  //   app.hide(app.harmonicminModesList);
-  //   app.hide(app.majorModesList);
-  // }
-
- 
-  // switch(value){
-  //   case 'major':
-  //     app.toggle1(app.majorModesList);
-  //     // app.toggle1(app.melodicModesList);
-  //     app.show(app.keyList);
-  //     // app.hide(app.melodicModesList);
-  //     // app.hide(app.harmonicModesList);
-  //     break;
-  //   case 'melodic':
-  //     app.toggle1(app.melodicModesList);
-  //     app.hide(app.majorModesList);
-  //     // app.toggle1(app.keyList);
-  //     // app.hide(app.majorModesList);
-  //     // app.hide(app.harmonicModesList);
-      
-  //   break;
-  //   case 'harmonicmin':
-  //     app.toggle1(app.harmonicminModesList);
-  //     // app.toggle1(app.keyList);
-  //     // app.hide(app.melodicModesList);
-  //     // app.hide(app.majorModesList);
-      
-  //   break;
-
-  // }
 })
+
 app.keyList.addEventListener('click', function (e) {
   e.preventDefault();
   app.keyReturnArr = [];
