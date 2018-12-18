@@ -43,6 +43,8 @@ app.displayTime = function () {
   var str = "";
   var currentTime = new Date()
   var day = currentTime.getDate()
+  var month = currentTime.getMonth()
+  var year = currentTime.getFullYear()
   var hours = currentTime.getHours()
   var minutes = currentTime.getMinutes()
   var seconds = currentTime.getSeconds()
@@ -53,7 +55,7 @@ app.displayTime = function () {
   if (seconds < 10) {
     seconds = "0" + seconds
   }
-  str += day + ": " + hours + ":" + minutes + ":" + seconds + " ";
+  str += month + 1 + "." + day + "." + year + ':' +'  @ current time of ' + hours + ":" + minutes + ":" + seconds + " ";
   if (hours > 11) {
     str += "PM"
   } else {
@@ -340,7 +342,7 @@ app.harmsuperlocrian = function(array){
 // Compare two arrays
 // Creates list with the triad class on the item
 app.createFilterList = function (a, b, listParent) {
-  console.log(a + b);
+  console.log('CREATING BOARD WITH NEW PARAMS: APPLY SCALE ' + app.modeReturnVal + "(" + b + ")");
   for (let i = 0; i < a.length; i++) {
     const li = document.createElement('li');
     listParent.appendChild(li);
@@ -348,7 +350,6 @@ app.createFilterList = function (a, b, listParent) {
     li.classList.add('string-li');
     if (i == 0) {
       li.classList.add('open');
-      console.log('i = ' + i);
     }
     for (let j = 0; j < b.length; j++) {
       // console.log('check the array for a match ');
@@ -413,12 +414,14 @@ app.createKeyboardArray = function (array) {
 // Get Values 
 app.getValue = function (e) {
   app.getValueReturn = e.target.getAttribute('value')
-  app.getInnnerTextReturn = e.target.getAttribute('name');
-  // console.log(app.getValueReturn, app.modeReturnVal);
+  console.log('Selected value returned is ' + app.getValueReturn);
+  console.log('--------------------------------');
+
   return app.getValueReturn;
 }
 app.getValueName = function (e) {
   app.getValName = e.target.getAttribute('name')
+  console.log('Get values name return = ' + app.getValName);
   return app.getValName;
 }
 app.createBoard = function () {
@@ -428,6 +431,7 @@ app.createBoard = function () {
   app.gStringArr = app.newWTS(app.wts, app.roots[3]);
   app.bStringArr = app.newWTS(app.wts, app.roots[4]);
   app.e2StringArr = app.newWTS(app.wts, app.roots[0]);
+  console.log('A new board was created..');
 }
 app.createMode = function (x) {
   app.createFilterList(app.eStringArr, x, app.str1);
@@ -436,6 +440,7 @@ app.createMode = function (x) {
   app.createFilterList(app.gStringArr, x, app.str4);
   app.createFilterList(app.bStringArr, x, app.str5);
   app.createFilterList(app.e2StringArr, x, app.str6);
+  console.log('Created a filtered list to display ' + app.modeReturnVal);
 }
 
 app.applyMode = function () {
@@ -646,7 +651,6 @@ app.hide = function (elem) {
 }
 app.toggle1 = function (elem) {
   elem.classList.toggle('is-visible');
-  console.log(elem);
 }
 
 app.disableBtnCreate = function() {
@@ -660,9 +664,15 @@ app.disableBtnCreate = function() {
   }
 }
 app.refresh = function() {
+  app.keyReturnVal = null;
+  app.modeReturnVal = null;
+  app.checkValues();
   app.clearBoard();
-  app.applyBtnElement.disabled = false;
   app.createGtrNeck(app.wts);
+
+
+  console.log('--Refreshed--');
+ 
 }
 // EVENT LISTNERS
 app.qualityList.addEventListener('click', function(e){
@@ -707,42 +717,70 @@ if(value !== 'major' && value !== 'harmonicmin'){
 
 app.keyList.addEventListener('click', function (e) {
   e.preventDefault();
-  app.keyReturnArr = [];
+  console.log('KEYLIST selected');
+
   app.keyReturnVal = app.getValue(e);
   app.keyLetterVal = app.getValueName(e);
-  app.outputfeild2.innerHTML = app.getInnnerTextReturn;
+  app.outputfeild2.innerHTML = app.keyLetterVal.length;
+
+  app.keyReturnArr = [];
   app.keyReturnArr = app.newWTS(app.wts, app.keyReturnVal);
+  app.checkValues();
 })
+
 app.modesListner.addEventListener('click', function (e) {
   e.preventDefault();
+  console.log('MODESLIST selected');
+
   app.modeReturnVal = app.getValue(e);
-  app.outputfeild.innerHTML = app.getInnnerTextReturn;
+  app.checkValues();
+  app.outputfeild.innerHTML = app.modeReturnVal;
 
 })
 
 
+// Apply Button
 app.applyBtnElement.addEventListener('click', function () {
   app.disableBtnCreate();
+  // app.checkValues();
   app.applyMode();
-  // app.keyReturnVal = "";
-  console.log(app.keyReturnVal);
-  // app.modeReturnVal = "";
-  console.log(app.modeReturnVal);
 })
 app.refreshBtnEle.addEventListener('click', function(){
   app.refresh();
 })
+app.checkValues = function() {
+  // app.keyReturnVal = 0;
+  console.log('CHECK inputs for null value')
+  if(app.keyReturnVal != null && app.modeReturnVal != null){
+    app.applyBtnElement.disabled = false;
+    console.log('Success: Return values are collected, ready to apply. Enable Apply button.');
+  }else{
+    app.applyBtnElement.disabled = true;
+    console.log('Warning!: There is a value empty!! Disable button');
+  }
+  console.log('--------------------------------');
+
+}
 // App Initializer
 app.init = function () {
-  console.log('Init running..set up default behaviours');
+  console.log('Initializing application');
+  console.log('Build date recorded on ' + app.displayTime());
+  console.log('--------------------------------');
+
   // app.handleDefaultValue();
   app.createGtrNeck(app.wts);
+  app.applyBtnElement.disabled = true;
+  
+  
+
 }
 
 // On Page Load
 document.addEventListener('DOMContentLoaded', function () {
   // code
-  console.log('Application starting at..' + app.displayTime())
-  console.log('Loaded app.init')
+  // console.log('Application starting at..' + app.displayTime())
+  console.log('--Welcome to JXS Guitar Tools!--');
+  console.log('Built by Jake');
+  console.log('--------------------------------');
   app.init()
 })
