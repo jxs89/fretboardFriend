@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- SCRATCH PAD -->
+
+    <header>
+        <div id="logo">
+            <h1>Fretboard Friend</h1>
+            <h2>jxscode.com</h2>
+        </div>
+    </header>
+
+    <section id="about">
+        <p>This is what the app is about and how it works</p>
+    </section>
+
+    <nav id="nav">
+        <ul>
+            <li><a href="#">Scales</a>
+            <li><a href="#">Chords</a></li>
+            <li><a href="#">Modes</a></li>
+            <li><a href="#">Circle Of 5ths</a></li>
+            <li><a href="#">Resources</a></li>
+        </ul>
+    </nav>   
+    
+    <section id="scales">
+
+    </section>
+
+    <section id="chords">
+
+    </section>
+    <section id="modesBuilder">
+        <div class="wrap">
+            <ul class="options-list is-visble" id="qualityID">
+                <li value="major">major</li>
+                <li value="melodic">melodic</li>
+                <li value="harmonicmin">harmonic</li>
+            </ul>
+        </div>
+
+        <div id="modesListener" class="wrap">
+            <ul class="options-list toggle-content" id="majorModes">
+                <li value="ionian" name="ionian">Ionian</li>
+                <li value="dorian" name="dorian">Dorian</li>
+                <li value="phrygian" name="phrgian">Phrygian</li>
+                <li value="lydian" name="lydian">Lydian</li>
+                <li value="mixolydian" name="mixolydian">Mixolydian</li>
+                <li value="aeolian" name="aeolian">Aeolian</li>
+                <li value="locrian" name="locrian">Locrian</li>
+            </ul>
+            <ul class="options-list toggle-content" id="melodicModes">
+                <li value="melodicmin" name="melodic minor">melodic</li>
+                <li value="dorianb2">dorian b2</li>
+                <li value="lydianAugmented">lydian #5</li>
+                <li value="lydianDom">lydian dominant</li>
+                <li value="mixolydianb6">mixolydian b6</li>
+                <li value="locrian#2">locrian #2</li>
+                <li value="superlocrian">superlocrian</li>
+            </ul>
+            <ul class="options-list toggle-content" id="harminModes">
+                <li value="harmonicmin">harmonic</li>
+                <li value="locrian6">locrain #6</li>
+                <li value="ionian5">ionian #5</li>
+                <li value="dorian4">dorian #4</li>
+                <li value="phygiandom">phygian dominant</li>
+                <li value="lydian2">lydian #2</li>
+                <li value="superlocrian2">superlocrian</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="rootList">
+            <ul class="options-list" id="keyID">
+                <li value="3" name="C">C</li>
+                <li value="10" name="G">G</li>
+                <li value="5" name="D">D</li>
+                <li value="0" name="A">A</li>
+                <li value="7" name="E">E</li>
+                <li value="2" name="B">B</li>
+                <li value="9" name="F#">F#</li>
+                <li value="4" name="C#">C#</li>
+                <li value="11" name="G#">G#</li>
+                <li value="6" name="D#">D#</li>
+                <li value="1" name="A#">A#</li>
+                <li value="8" name="F">F</li>
+            </ul>
+    </section>
+
+
+    <section id="cof">
+            <div class="slider">
+                    <div class="circular-slider circular-slider-4">
+                      <div class="wrapper">
+                        <div class="controls">
+                          <div class="controls__left">
+                            <div class="icon-wrapper"><i class="far fa-arrow-alt-circle-left"></i></div>
+                          </div>
+                          <div class="controls__right">
+                            <div class="icon-wrapper"><i class="far fa-arrow-alt-circle-right"></i></div>
+                          </div>
+                          <div class="controls__autoplay controls__autoplay_running">
+                            <div class="icon-wrapper">
+                              <div class="pause"><i class="far fa-pause-circle"></i></div>
+                              <div class="run"><i class="far fa-play-circle"></i></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="slides-holder">
+                          <div class="slides-holder__item slides-holder__item_active"><img src="img/js.svg" alt="img"/></div>
+                          <div class="slides-holder__item"><img src="img/css.png" alt="img"/></div>
+                          <div class="slides-holder__item"><img src="img/html.png" alt="img"/></div>
+                          <div class="slides-holder__item"><img src="img/sass.png" alt="img"/></div>
+                          <div class="slides-holder__item"><img src="img/vstudio.png" alt="img"/></div>
+                          <div class="slides-holder__item"><img src="img/chrome.png" alt="img"/></div>
+                        </div>
+                        <div class="descriptions">
+                          <div class="descriptions__item descriptions__item_visible">
+                            <h1>Javascript</h1>
+                            <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, ea? Commodi alias ad corporis velit, neque facere fugit nulla exercitationem veniam. Facere est cupiditate perspiciatis aliquid odio impedit enim quo!</p>
+                          </div>
+                          <div class="descriptions__item">
+                            <h1>Css3</h1>
+                            <p class="description"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, ea? Commodi alias ad corporis velit, neque facere fugit nulla exercitationem veniam. Facere est cupiditate perspiciatis aliquid odio impedit enim quo!</p>
+                          </div>
+                          <div class="descriptions__item">
+                            <h1>Html5</h1>
+                            <p class="description"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, ea? Commodi alias ad corporis velit, neque facere fugit nulla exercitationem veniam. Facere est cupiditate perspiciatis aliquid odio impedit enim quo!</p>
+                          </div>
+                          <div class="descriptions__item">
+                            <h1>Sass</h1>
+                            <p class="description"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, ea? Commodi alias ad corporis velit, neque facere fugit nulla exercitationem veniam. Facere est cupiditate perspiciatis aliquid odio impedit enim quo!</p>
+                          </div>
+                          <div class="descriptions__item">
+                            <h1>MVS Code</h1>
+                            <p class="description"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, ea? Commodi alias ad corporis velit, neque facere fugit nulla exercitationem veniam. Facere est cupiditate perspiciatis aliquid odio impedit enim quo!</p>
+                          </div>
+                          <div class="descriptions__item">
+                            <h1>Chrome</h1>
+                            <p class="description"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, ea? Commodi alias ad corporis velit, neque facere fugit nulla exercitationem veniam. Facere est cupiditate perspiciatis aliquid odio impedit enim quo!</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+            </div>
+    </section>
+    <section id="resources"></section>
+</body>
+</html>

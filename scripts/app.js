@@ -29,6 +29,7 @@ const keyboardList = document.querySelector('.keyboards');
 app.outputfeild = document.getElementById('outputfeild');
 app.outputfeild2 = document.getElementById('outputfeild2');
 app.applyBtnElement = document.getElementById('createbtn');
+app.refreshBtnEle = document.getElementById('refreshbtn');
 app.neckLink = document.getElementById('gtrNeckChosen');
 app.kLink = document.getElementById('keyboardChosen');
 app.createKeyboardArray = document.getElementById('keys');
@@ -335,19 +336,6 @@ app.harmsuperlocrian = function(array){
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // END MODE FILTERS 
 // Compare two arrays
 // Creates list with the triad class on the item
@@ -425,6 +413,7 @@ app.createKeyboardArray = function (array) {
 // Get Values 
 app.getValue = function (e) {
   app.getValueReturn = e.target.getAttribute('value')
+  app.getInnnerTextReturn = e.target.getAttribute('name');
   // console.log(app.getValueReturn, app.modeReturnVal);
   return app.getValueReturn;
 }
@@ -519,7 +508,7 @@ app.applyMode = function () {
 
       app.createdDorianb2Scale = app.dorianb2(app.keyReturnArr);
       app.createBoard();
-      app.createMode(app.createdDorianScale);
+      app.createMode(app.createdDorianb2Scale);
       console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
 
       break;
@@ -659,6 +648,22 @@ app.toggle1 = function (elem) {
   elem.classList.toggle('is-visible');
   console.log(elem);
 }
+
+app.disableBtnCreate = function() {
+  if(app.modeReturnVal !== "" && app.keyReturnVal !== ""){
+    app.applyBtnElement.disabled = true;
+    console.log('disabled');
+  }
+  else{
+    app.applyBtnElement.disabled = false;
+    console.log('should be ok');
+  }
+}
+app.refresh = function() {
+  app.clearBoard();
+  app.applyBtnElement.disabled = false;
+  app.createGtrNeck(app.wts);
+}
 // EVENT LISTNERS
 app.qualityList.addEventListener('click', function(e){
   // e.preventDefault();
@@ -705,25 +710,28 @@ app.keyList.addEventListener('click', function (e) {
   app.keyReturnArr = [];
   app.keyReturnVal = app.getValue(e);
   app.keyLetterVal = app.getValueName(e);
-  app.outputfeild2.innerHTML = app.keyLetterVal + app.keyReturnVal;
+  app.outputfeild2.innerHTML = app.getInnnerTextReturn;
   app.keyReturnArr = app.newWTS(app.wts, app.keyReturnVal);
 })
 app.modesListner.addEventListener('click', function (e) {
   e.preventDefault();
   app.modeReturnVal = app.getValue(e);
-  app.outputfeild.innerHTML = app.modeReturnVal;
+  app.outputfeild.innerHTML = app.getInnnerTextReturn;
 
 })
 
 
 app.applyBtnElement.addEventListener('click', function () {
+  app.disableBtnCreate();
   app.applyMode();
   // app.keyReturnVal = "";
   console.log(app.keyReturnVal);
   // app.modeReturnVal = "";
   console.log(app.modeReturnVal);
 })
-
+app.refreshBtnEle.addEventListener('click', function(){
+  app.refresh();
+})
 // App Initializer
 app.init = function () {
   console.log('Init running..set up default behaviours');

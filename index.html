@@ -10,6 +10,9 @@
 <body>
   <div class="container" id="app">
     <div class="wrapper">
+
+      <!-- Main Nav -->
+ 
       <div class="flex-parent">
         <div class="flex-child">
             <section id="menu" class="wrapper">
@@ -24,18 +27,20 @@
                         <li value="melodic">melodic</li>
                         <li value="harmonicmin">harmonic</li>
                       </ul>
+
+                      
                       <div id="modesListener">
                         <ul class="options-list toggle-content" id="majorModes">
-                          <li value="ionian">Ionian</li>
-                          <li value="dorian">Dorian</li>
-                          <li value="phrygian">Phrygian</li>
-                          <li value="lydian">Lydian</li>
-                          <li value="mixolydian">Mixolydian</li>
-                          <li value="aeolian">Aeolian</li>
-                          <li value="locrian">Locrian</li>
+                          <li value="ionian" name="ionian">Ionian</li>
+                          <li value="dorian" name="dorian">Dorian</li>
+                          <li value="phrygian" name="phrgian">Phrygian</li>
+                          <li value="lydian" name="lydian">Lydian</li>
+                          <li value="mixolydian" name="mixolydian">Mixolydian</li>
+                          <li value="aeolian" name="aeolian">Aeolian</li>
+                          <li value="locrian" name="locrian">Locrian</li>
                         </ul>
                         <ul class="options-list toggle-content" id="melodicModes">
-                          <li value="melodicmin">melodic</li>
+                          <li value="melodicmin" name="melodic minor">melodic</li>
                           <li value="dorianb2">dorian b2</li>
                           <li value="lydianAugmented">lydian #5</li>
                           <li value="lydianDom">lydian dominant</li>
@@ -70,14 +75,19 @@
                       </ul>
                       <!-- One controll button  -->
                       <button id="createbtn" class="btn">create</button>
+                      <button id="refreshbtn" class="btn">refresh</button>
                     </div>
                 </div>
               </section>
         </div>
         <div class="flex-child">
-            <div class="neck">
-               <h2 class="hstyle">Mode: <span id="outputfeild" class="res"></span></h2> 
-               <h2 class="hstyle">Key: <span id="outputfeild2" class="res"></span></h2> 
+            <div class="neck-container">
+              <div class="output wrapper">
+                <h2 class="hstyle">Create</h2>
+                <p>
+                <span class="hstyle res" id="outputfeild2"> </span><span id="outputfeild" class="res"></span>
+                </p>
+              </div>
               <div class="guitar-neck">
                 <div class="string-container" id="board">
                   <ul class="inlays">
