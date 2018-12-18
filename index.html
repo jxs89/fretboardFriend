@@ -22,15 +22,35 @@
                       <!-- Two menu lists -->
                       <header><h1>Fretboard Friend</h1></header>
                       <h2 class="hstyle">Select a Key, then select a mode. Click create to apply to the fretboard.</h2>
+
+                     
                       <ul class="options-list is-visble" id="qualityID">
                         <li value="major">major</li>
                         <li value="melodic">melodic</li>
                         <li value="harmonicmin">harmonic</li>
                       </ul>
 
+                      <ul class="options-list" id="keyID">
+                          <li value="6" name="D#">D#</li>
+                          <li value="7" name="E">E</li>
+                          <li value="8" name="F">F</li>
+                          <li value="9" name="F#">F#</li>
+                          <li value="10" name="G">G</li>
+                          <li value="11" name="G#">G#</li>
+                          <li value="0" name="A">A</li>
+                          <li value="1" name="A#">A#</li>
+                          <li value="2" name="B">B</li>
+                          <li value="3" name="C">C</li>
+                          <li value="4" name="C#">C#</li>
+                          <li value="5" name="D">D</li>
+                        </ul>
                       
-                      <div id="modesListener">
-                        <ul class="options-list toggle-content" id="majorModes">
+                      
+                      <div id="modesListener" class="modesListen">
+                        <ul id="ModeList" class="options-list modes-list">
+                        
+                        </ul>
+                        <!-- <ul class="options-list toggle-content" id="majorModes">
                           <li value="ionian" name="ionian">Ionian</li>
                           <li value="dorian" name="dorian">Dorian</li>
                           <li value="phrygian" name="phrgian">Phrygian</li>
@@ -41,38 +61,25 @@
                         </ul>
                         <ul class="options-list toggle-content" id="melodicModes">
                           <li value="melodicmin" name="melodic minor">melodic</li>
-                          <li value="dorianb2">dorian b2</li>
-                          <li value="lydianAugmented">lydian #5</li>
-                          <li value="lydianDom">lydian dominant</li>
-                          <li value="mixolydianb6">mixolydian b6</li>
-                          <li value="locrian#2">locrian #2</li>
-                          <li value="superlocrian">superlocrian</li>
+                          <li value="dorianb2" name="dorian b2">dorian b2</li>
+                          <li value="lydianAugmented" name="lydian #5">lydian #5</li>
+                          <li value="lydianDom" name="lydian dominant">lydian dominant</li>
+                          <li value="mixolydianb6" name="mixolydian b6">mixolydian b6</li>
+                          <li value="locrian#2" name="locrian #2">locrian #2</li>
+                          <li value="superlocrian" name="superlocrian">superlocrian</li>
                         </ul>
                         <ul class="options-list toggle-content" id="harminModes">
-                          <li value="harmonicmin">harmonic</li>
-                          <li value="locrian6">locrain #6</li>
-                          <li value="ionian5">ionian #5</li>
-                          <li value="dorian4">dorian #4</li>
-                          <li value="phygiandom">phygian dominant</li>
-                          <li value="lydian2">lydian #2</li>
-                          <li value="superlocrian2">superlocrian</li>
-                        </ul>
+                          <li value="harmonicmin" name="harmonic minor">harmonic</li>
+                          <li value="locrian6" name="locrain #6">locrain #6</li>
+                          <li value="ionian5" name="ionian #5">ionian #5</li>
+                          <li value="dorian4" name="dorian #4">dorian #4</li>
+                          <li value="phygiandom" name="prygian dominant">phrygian dominant</li>
+                          <li value="lydian2" name="lydain #2">lydian #2</li>
+                          <li value="superlocrian2" name="superlocrian">superlocrian</li>
+                        </ul> -->
                       </div>
                      
-                      <ul class="options-list" id="keyID">
-                        <li value="6" name="D#">D#</li>
-                        <li value="7" name="E">E</li>
-                        <li value="8" name="F">F</li>
-                        <li value="9" name="F#">F#</li>
-                        <li value="10" name="G">G</li>
-                        <li value="11" name="G#">G#</li>
-                        <li value="0" name="A">A</li>
-                        <li value="1" name="A#">A#</li>
-                        <li value="2" name="B">B</li>
-                        <li value="3" name="C">C</li>
-                        <li value="4" name="C#">C#</li>
-                        <li value="5" name="D">D</li>
-                      </ul>
+                    
                       <!-- One controll button  -->
                       <button id="createbtn" class="btn">create</button>
                       <button id="refreshbtn" class="btn">refresh</button>
@@ -83,9 +90,8 @@
         <div class="flex-child">
             <div class="neck-container">
               <div class="output wrapper">
-                <h2 class="hstyle">Create</h2>
-                <p>
-                <span class="hstyle res" id="outputfeild2"> </span>
+                <p><span class="res2">Displayed: </span>
+                <span class="res" id="outputfeild2"></span>
                 <span id="outputfeild" class="res"></span>
                 </p>
               </div>

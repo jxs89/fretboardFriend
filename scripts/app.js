@@ -9,12 +9,15 @@ app.qualityList = document.querySelector('#qualityID');
 app.fretboardControl = document.getElementById('gtrNeck');
 
 app.modesListner = document.getElementById('modesListener');
+app.modeList = document.getElementById('ModeList');
 
 
 
 app.wts = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
 app.roots = [7, 0, 5, 10, 2, 7];
-
+app.majorscaleHarmony = ['ionian', 'dorian', 'phrygian', 'lydian', 'mixolydian', 'aeolian', 'locrian'];
+app.melodicscaleHarmony = ['melodic minor', 'dorian b2', 'lydian #5', 'lydian dominant', 'mixolydian b6', 'locrian #2', 'superlocrian'];
+app.harmonicminorscaleHarmony = ['harmonic minor', 'locrian #6', 'ionian #5','dorian #4' , 'phyrgian dominant', 'lydian #2', 'superlocrain2'];
 // Li containers
 app.str1 = document.getElementById('str1');
 app.str2 = document.getElementById('str2');
@@ -367,6 +370,28 @@ app.createFilterList = function (a, b, listParent) {
   };
 };
 
+
+app.createModesUL = function(array){
+  app.modesOutputUL = document.getElementById('ModeList');
+  app.modesOutputUL.classList.add('options-list');
+  // app.modesOutputUL.classList.add('toggl');
+
+  // app.createdMajorScaleListParent.setAttribute('id', 'majorModes');
+
+  for(let i = 0; i < array.length; i++){
+    const li = document.createElement('li');
+    app.modesOutputUL.appendChild(li);
+
+    li.innerHTML = array[i];
+    li.setAttribute('value', array[i]);
+    // li.classList.add('is-visible');
+    console.log('adding new list item');
+    console.log(li.getAttribute('value'));
+  }
+
+  return app.modesOutputUL;
+}
+
 // BUILD NECK
 // Creates list items based on size of array
 app.createGtrString = function (a, listParent) {
@@ -421,7 +446,7 @@ app.getValue = function (e) {
 }
 app.getValueName = function (e) {
   app.getValName = e.target.getAttribute('name')
-  console.log('Get values name return = ' + app.getValName);
+  // console.log('Get values name return = ' + app.getValName);
   return app.getValName;
 }
 app.createBoard = function () {
@@ -440,7 +465,6 @@ app.createMode = function (x) {
   app.createFilterList(app.gStringArr, x, app.str4);
   app.createFilterList(app.bStringArr, x, app.str5);
   app.createFilterList(app.e2StringArr, x, app.str6);
-  console.log('Created a filtered list to display ' + app.modeReturnVal);
 }
 
 app.applyMode = function () {
@@ -499,7 +523,7 @@ app.applyMode = function () {
       console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
 
       break;
-    case 'melodicmin':
+    case 'melodic minor':
       app.clearBoard();
 
       app.createdMelodicScale = app.melodic(app.keyReturnArr);
@@ -508,7 +532,7 @@ app.applyMode = function () {
       console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
 
       break;
-    case 'dorianb2':
+    case 'dorian b2':
       app.clearBoard();
 
       app.createdDorianb2Scale = app.dorianb2(app.keyReturnArr);
@@ -517,7 +541,7 @@ app.applyMode = function () {
       console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
 
       break;
-    case 'lydianAugmented':
+    case 'lydian augmented':
       app.clearBoard();
 
       app.createdlydianAugmentedScale = app.lydianAug(app.keyReturnArr);
@@ -526,7 +550,7 @@ app.applyMode = function () {
       console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
 
       break;
-    case 'lydianDom':
+    case 'lydian dominant':
       app.clearBoard();
 
       app.createdlydianDomScale = app.lydianDom(app.keyReturnArr);
@@ -535,7 +559,7 @@ app.applyMode = function () {
       console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
 
       break;
-    case 'mixolydianb6':
+    case 'mixolydian b6':
       app.clearBoard();
 
       app.createdmixolydianb6Scale = app.mixoflat6(app.keyReturnArr);
@@ -544,7 +568,7 @@ app.applyMode = function () {
       console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
 
       break;
-    case 'locrian#2':
+    case 'locrian #2':
       app.clearBoard();
 
       app.createdlocriansharp2Scale = app.locriansharp2(app.keyReturnArr);
@@ -656,7 +680,7 @@ app.toggle1 = function (elem) {
 app.disableBtnCreate = function() {
   if(app.modeReturnVal !== "" && app.keyReturnVal !== ""){
     app.applyBtnElement.disabled = true;
-    console.log('disabled');
+    console.log('Create button has been disabled');
   }
   else{
     app.applyBtnElement.disabled = false;
@@ -679,39 +703,47 @@ app.qualityList.addEventListener('click', function(e){
   // e.preventDefault();
   let value = "";
    value = app.getValue(e);
-
-  // Harmonic
-  if(value !== 'major' && value !== 'melodic'){
-    if(app.majorModesList.classList.contains('is-visible')){
-      app.toggle1(app.majorModesList);
-    }
-    if(app.melodicModesList.classList.contains('is-visible')){
-      app.toggle1(app.melodicModesList);
-    }
-    app.toggle1(app.harmonicminModesList);
-}
-// major
-if(value !== 'harmonicmin' && value !== 'melodic'){
-  if(app.melodicModesList.classList.contains('is-visible')){
-    app.toggle1(app.melodicModesList);
+  //  app.modesOutputUL.innerHTML = null;
+   
+  switch (value){
+    case 'major':
+    app.modeList.innerHTML = "";
+    app.createModesUL(app.majorscaleHarmony);
+    break;
+    case 'melodic':
+    app.modeList.innerHTML = "";
+    app.createModesUL(app.melodicscaleHarmony);
+    break;
+    case 'harmonicmin':
+    app.modeList.innerHTML = "";
+    app.createModesUL(app.harmonicminorscaleHarmony);
   }
-  if (app.harmonicminModesList.classList.contains('is-visible')){
-    app.toggle1(app.harmonicminModesList);
-  }
-    app.toggle1(app.majorModesList);
-}
 
+//   // Harmonic
+//   if(value !== 'major' && value !== 'melodic'){
+//     // 
+//     // app.modesOutputUL.innerHTML = "";
+//     app.createModesUL(app.harmonicminorscaleHarmony);
+// }
+// // major
+// if(value !== 'harmonicmin' && value !== 'melodic'){
+//   // app.modesOutputUL.innerHTML = "";
+//   app.createModesUL(app.majorscaleHarmony);
+// }
 
-if(value !== 'major' && value !== 'harmonicmin'){
-  if(app.majorModesList.classList.contains('is-visible')){
-    app.toggle1(app.majorModesList);
-  }
-  if(app.harmonicminModesList.classList.contains('is-visible')){
-    app.toggle1(app.harmonicModesList);
-  }
-  app.toggle1(app.melodicModesList);
+// if(value !== 'major' && value !== 'harmonicmin'){
+//   // if(app.majorModesList.classList.contains('is-visible')){
+//   //   app.toggle1(app.majorModesList);
+//   // }
+//   // if(app.harmonicminModesList.classList.contains('is-visible')){
+//   //   app.toggle1(app.harmonicModesList);
+//   // }
+//   // app.toggle1(app.melodicModesList);
+//   // app.modesOutputUL.innerHTML = "";
 
-}
+//   app.createModesUL(app.melodicscaleHarmony);
+
+// }
 
 })
 
@@ -721,11 +753,12 @@ app.keyList.addEventListener('click', function (e) {
 
   app.keyReturnVal = app.getValue(e);
   app.keyLetterVal = app.getValueName(e);
-  app.outputfeild2.innerHTML = app.keyLetterVal.length;
+  app.outputfeild2.innerHTML = app.keyLetterVal;
 
   app.keyReturnArr = [];
   app.keyReturnArr = app.newWTS(app.wts, app.keyReturnVal);
   app.checkValues();
+  app.modesOutputUL.classList.add('is-visible');
 })
 
 app.modesListner.addEventListener('click', function (e) {
@@ -734,7 +767,10 @@ app.modesListner.addEventListener('click', function (e) {
 
   app.modeReturnVal = app.getValue(e);
   app.checkValues();
-  app.outputfeild.innerHTML = app.modeReturnVal;
+  app.outputfeild.innerHTML = app.getValue(e);
+  console.log(app.getValue(e));  
+
+
 
 })
 
@@ -742,6 +778,8 @@ app.modesListner.addEventListener('click', function (e) {
 // Apply Button
 app.applyBtnElement.addEventListener('click', function () {
   app.disableBtnCreate();
+
+  app.modesListner.disabled = true;
   // app.checkValues();
   app.applyMode();
 })
