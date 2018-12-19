@@ -8,6 +8,14 @@
 </head>
 <body>
 
+  TODO: 
+  - Change lists over to the script
+  - Make Modules
+  - Uniform Style Guide
+  - Scaleable Css3
+  - Audio
+  - Data Architype
+  - 
     <!-- SCRATCH PAD -->
 
     <header>
@@ -23,7 +31,7 @@
 
     <nav id="nav">
         <ul>
-            <li><a href="#">Scales</a>
+            <li><a href="#">Scales</a><li>
             <li><a href="#">Chords</a></li>
             <li><a href="#">Modes</a></li>
             <li><a href="#">Circle Of 5ths</a></li>
@@ -41,41 +49,13 @@
     <section id="modesBuilder">
         <div class="wrap">
             <ul class="options-list is-visble" id="qualityID">
-                <li value="major">major</li>
-                <li value="melodic">melodic</li>
-                <li value="harmonicmin">harmonic</li>
             </ul>
         </div>
 
-        <div id="modesListener" class="wrap">
-            <ul class="options-list toggle-content" id="majorModes">
-                <li value="ionian" name="ionian">Ionian</li>
-                <li value="dorian" name="dorian">Dorian</li>
-                <li value="phrygian" name="phrgian">Phrygian</li>
-                <li value="lydian" name="lydian">Lydian</li>
-                <li value="mixolydian" name="mixolydian">Mixolydian</li>
-                <li value="aeolian" name="aeolian">Aeolian</li>
-                <li value="locrian" name="locrian">Locrian</li>
+        <div id="modesListener">
+            <ul id="ModeList">      
             </ul>
-            <ul class="options-list toggle-content" id="melodicModes">
-                <li value="melodicmin" name="melodic minor">melodic</li>
-                <li value="dorianb2">dorian b2</li>
-                <li value="lydianAugmented">lydian #5</li>
-                <li value="lydianDom">lydian dominant</li>
-                <li value="mixolydianb6">mixolydian b6</li>
-                <li value="locrian#2">locrian #2</li>
-                <li value="superlocrian">superlocrian</li>
-            </ul>
-            <ul class="options-list toggle-content" id="harminModes">
-                <li value="harmonicmin">harmonic</li>
-                <li value="locrian6">locrain #6</li>
-                <li value="ionian5">ionian #5</li>
-                <li value="dorian4">dorian #4</li>
-                <li value="phygiandom">phygian dominant</li>
-                <li value="lydian2">lydian #2</li>
-                <li value="superlocrian2">superlocrian</li>
-            </ul>
-        </div>
+          </div>
     </section>
 
     <section id="rootList">

@@ -11,13 +11,16 @@ app.fretboardControl = document.getElementById('gtrNeck');
 app.modesListner = document.getElementById('modesListener');
 app.modeList = document.getElementById('ModeList');
 
-
-
+app.scaleOptionsArr = ['major', 'melodic', 'harmonic minor'];
+app.navArr = ['scales', 'chords', 'theory', 'contact'];
+app.subNavArr = ['circle of 5ths', 'chord compare', 'chord builder', 'triad builder'];
+app.cofSharpsArr = ['c','g','d','a','e','b','f#', 'c#', 'g#', 'd#', 'a#', 'f' ];
+app.cofFlatArr = ['c', 'g' ,'d', 'a', 'e', 'b', 'gb', 'db', 'ab', 'eb', 'bb', 'f'];
 app.wts = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
 app.roots = [7, 0, 5, 10, 2, 7];
 app.majorscaleHarmony = ['ionian', 'dorian', 'phrygian', 'lydian', 'mixolydian', 'aeolian', 'locrian'];
 app.melodicscaleHarmony = ['melodic minor', 'dorian b2', 'lydian #5', 'lydian dominant', 'mixolydian b6', 'locrian #2', 'superlocrian'];
-app.harmonicminorscaleHarmony = ['harmonic minor', 'locrian #6', 'ionian #5','dorian #4' , 'phyrgian dominant', 'lydian #2', 'superlocrain2'];
+app.harmonicminorscaleHarmony = ['harmonic minor', 'locrian #6', 'ionian #5','dorian #4' , 'phyrgian dominant', 'lydian #2', 'superlocrain 2'];
 // Li containers
 app.str1 = document.getElementById('str1');
 app.str2 = document.getElementById('str2');
@@ -39,6 +42,7 @@ app.createKeyboardArray = document.getElementById('keys');
 app.btnDisable = true;
 app.changeTrigger = false;
 app.bingo = true;
+// app.modesOutputUL.classList.add('options-list');
 
 // Get Key Value
 // Display Time
@@ -372,15 +376,14 @@ app.createFilterList = function (a, b, listParent) {
 
 
 app.createModesUL = function(array){
-  app.modesOutputUL = document.getElementById('ModeList');
-  app.modesOutputUL.classList.add('options-list');
+  
   // app.modesOutputUL.classList.add('toggl');
 
   // app.createdMajorScaleListParent.setAttribute('id', 'majorModes');
 
   for(let i = 0; i < array.length; i++){
     const li = document.createElement('li');
-    app.modesOutputUL.appendChild(li);
+    app.modeList.appendChild(li);
 
     li.innerHTML = array[i];
     li.setAttribute('value', array[i]);
@@ -390,6 +393,19 @@ app.createModesUL = function(array){
   }
 
   return app.modesOutputUL;
+}
+
+app.createUL = function(array, parent){
+
+  for(let i = 0; i < array.length; i++){
+  const li = document.createElement('li');
+  li.innerHTML = array[i];
+
+  parent.appendChild(li);
+
+  li.setAttribute('value', array[i]);
+
+  }
 }
 
 // BUILD NECK
@@ -587,7 +603,7 @@ app.applyMode = function () {
 
       break;
 
-    case 'harmonicmin':
+    case 'harmonic minor':
       app.clearBoard();
       app.createdHarmonicMinorScale = app.harmonicmin(app.keyReturnArr);
       app.createBoard();
@@ -595,7 +611,7 @@ app.applyMode = function () {
       console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
 
       break;
-    case 'locrian6':
+    case 'locrian #6':
       app.clearBoard();
       app.createdLocrian6Scale = app.locrian6(app.keyReturnArr);
       app.createBoard();
@@ -603,7 +619,7 @@ app.applyMode = function () {
       console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
 
       break;
-    case'dorian4':
+    case'dorian #4':
       app.clearBoard();
       app.createdDorian4Scale = app.dorian4(app.keyReturnArr);
       app.createBoard();
@@ -611,7 +627,7 @@ app.applyMode = function () {
       console.log(app.keyLetterVal + " " + app.modeReturnVal + " Has been applied");
 
       break;
-    case'phygiandom':
+    case'phrygian dominant':
       app.clearBoard();
       app.createdPhgiandomScale= app.phrgyiandom(app.keyReturnArr);
       app.createBoard();
@@ -620,7 +636,7 @@ app.applyMode = function () {
 
 
       break;
-    case'lydian2':
+    case'lydian #2':
       app.clearBoard();
       app.createdLydian2Scale = app.lydian2(app.keyReturnArr);
       app.createBoard();
@@ -629,7 +645,7 @@ app.applyMode = function () {
 
 
       break;
-    case 'superlocrian2':
+    case 'superlocrian 2':
       app.clearBoard();
       app.createdSuperlocrian2Scale = app.harmsuperlocrian(app.keyReturnArr);
       app.createBoard();
@@ -698,13 +714,34 @@ app.refresh = function() {
   console.log('--Refreshed--');
  
 }
+app.getQualityValue = function(){
+  let value = "";
+ value = app.getValue(e);
+ console.log('quality list value is ' + value);
+//  app.modesOutputUL.innerHTML = null;
+ 
+switch (value){
+  case 'major':
+  app.modeList.innerHTML = "";
+  app.createModesUL(app.majorscaleHarmony);
+  break;
+  case 'melodic':
+  app.modeList.innerHTML = "";
+  app.createModesUL(app.melodicscaleHarmony);
+  break;
+  case 'harmonic minor':
+  app.modeList.innerHTML = "";
+  app.createModesUL(app.harmonicminorscaleHarmony);
+  break;
+}
+return value;
+}
 // EVENT LISTNERS
 app.qualityList.addEventListener('click', function(e){
-  // e.preventDefault();
-  let value = "";
-   value = app.getValue(e);
-  //  app.modesOutputUL.innerHTML = null;
-   
+  // app.getQualityValue();
+  value = app.getValue(e);
+  console.log('quality list value is ' + value);
+
   switch (value){
     case 'major':
     app.modeList.innerHTML = "";
@@ -714,36 +751,11 @@ app.qualityList.addEventListener('click', function(e){
     app.modeList.innerHTML = "";
     app.createModesUL(app.melodicscaleHarmony);
     break;
-    case 'harmonicmin':
+    case 'harmonic minor':
     app.modeList.innerHTML = "";
     app.createModesUL(app.harmonicminorscaleHarmony);
+  break;
   }
-
-//   // Harmonic
-//   if(value !== 'major' && value !== 'melodic'){
-//     // 
-//     // app.modesOutputUL.innerHTML = "";
-//     app.createModesUL(app.harmonicminorscaleHarmony);
-// }
-// // major
-// if(value !== 'harmonicmin' && value !== 'melodic'){
-//   // app.modesOutputUL.innerHTML = "";
-//   app.createModesUL(app.majorscaleHarmony);
-// }
-
-// if(value !== 'major' && value !== 'harmonicmin'){
-//   // if(app.majorModesList.classList.contains('is-visible')){
-//   //   app.toggle1(app.majorModesList);
-//   // }
-//   // if(app.harmonicminModesList.classList.contains('is-visible')){
-//   //   app.toggle1(app.harmonicModesList);
-//   // }
-//   // app.toggle1(app.melodicModesList);
-//   // app.modesOutputUL.innerHTML = "";
-
-//   app.createModesUL(app.melodicscaleHarmony);
-
-// }
 
 })
 
@@ -758,7 +770,7 @@ app.keyList.addEventListener('click', function (e) {
   app.keyReturnArr = [];
   app.keyReturnArr = app.newWTS(app.wts, app.keyReturnVal);
   app.checkValues();
-  app.modesOutputUL.classList.add('is-visible');
+  app.modeList.classList.add('is-visible');
 })
 
 app.modesListner.addEventListener('click', function (e) {
@@ -809,6 +821,8 @@ app.init = function () {
   app.createGtrNeck(app.wts);
   app.applyBtnElement.disabled = true;
   
+  // app.createUL(app.wts, app.keyList);
+  app.createUL(app.scaleOptionsArr, app.qualityList);
   
 
 }
